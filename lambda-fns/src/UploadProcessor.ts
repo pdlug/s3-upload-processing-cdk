@@ -1,6 +1,8 @@
 import * as AWSLambda from 'aws-lambda'
 import { S3 } from '@aws-sdk/client-s3'
 
+import { streamToBuffer } from './s3util'
+
 const bucketName = process.env.BUCKET!
 
 const s3 = new S3({ region: 'us-east-1' })
@@ -28,6 +30,8 @@ export const handler: AWSLambda.S3Handler = async (event) => {
         Bucket: bucketName,
         Key: newKey,
       })
+
+      const contents = await streamToBuffer(obj.Body)
     }),
   )
 }
