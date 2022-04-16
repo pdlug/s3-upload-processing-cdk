@@ -5,7 +5,7 @@ import { Api } from './api'
 import { Storage } from './storage'
 import { UploadProcessor } from './upload-processor'
 
-export class DeployStack extends cdk.Stack {
+export class S3UploadProcessingStack extends cdk.Stack {
   constructor(scope: Construct, id: string, props?: cdk.StackProps) {
     super(scope, id, props)
 
